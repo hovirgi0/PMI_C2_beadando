@@ -11,7 +11,7 @@ public class ModifyElement {
     static String modifyUserInfo() throws Exception {
         Scanner in = new Scanner(System.in);
         File inputFile = new File("src/main/resources/UserInfo.xml");
-        File tempFile = new File("myTempUserInfo.xml");
+        File tempFile = new File("myTempUserInfom.xml");
 
         BufferedReader reader = new BufferedReader(new FileReader(inputFile));
         BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));

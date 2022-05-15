@@ -10,7 +10,7 @@ public class RemoveElement {
         static Object removeUserInfo() throws Exception {
         Scanner in = new Scanner(System.in);
         File inputFile = new File("src/main/resources/UserInfo.xml");
-        File tempFile = new File("myTemp.xml");
+        File tempFile = new File("myTempUserInfor.xml");
 
         BufferedReader reader = new BufferedReader(new FileReader(inputFile));
         BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
