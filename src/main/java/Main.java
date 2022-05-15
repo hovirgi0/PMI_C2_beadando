@@ -16,7 +16,6 @@ public class Main {
     private static final char SEPARATOR = ';';
 
     public static String getFormattedXML(String xmlRaw) throws Exception { // Elemek listájának lekérdezése, kiíratása a konzolra.
-
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance(); //
         documentBuilderFactory.setValidating(false);
         Document document = documentBuilderFactory.newDocumentBuilder().parse(new InputSource(new StringReader(xmlRaw)));
@@ -77,17 +76,6 @@ public class Main {
     }
 
     public static void main(String[] args) throws Exception {
-
-        //Menü pontok XML fájlban való rögzítése
-        String unFormattedXML ="<menu><nev>Nev</nev><kor>Kor</kor><nem>Nem</nem><magassag>Magassag</magassag><testsuly>Testsuly</testsuly></menu>";
-        String formattedXML = getFormattedXML(unFormattedXML);
-        //System.out.println(formattedXML);
-
-        //Writing formatted XML to a file
-        FileWriter fileWriter = new FileWriter("formattedXML.xml");
-        fileWriter.write(formattedXML);
-        fileWriter.close(); // closing file writer stream
-
         //ENTER lenyomásával a felhasználó elkezdheti rögzíteni a menüpontokba az adatait...
         System.out.println("Saját adatai rögzítéséhez nyomjon 'ENTER' -t! \nMódosításukhoz használja a 'Modify' szót!\nEltávolításukhoz a 'Remove' szót!\n");
         Scanner readinput = new Scanner(System.in);
@@ -109,9 +97,27 @@ public class Main {
             RemoveElement remove = new RemoveElement(); //Elem törlése metódus
             remove.removeUserInfo();
         }
+
+        else if(presskey == "UserInfo") {
+            StringWriter stringWriter = new StringWriter();
+            String formatted = stringWriter.toString();
+            getFormattedXML(formatted);
+        }
     }
 
-    static void newUserInfo() throws Exception {
+    static void writetoFormattedXML() throws Exception { //XML fájlba a menüpontok/szempontok rögzítése
+        //Menü pontok XML fájlban való rögzítése
+        String unFormattedXML = "<menu><nev>Nev</nev><kor>Kor</kor><nem>Nem</nem><magassag>Magassag</magassag><testsuly>Testsuly</testsuly></menu>";
+        String formattedXML = getFormattedXML(unFormattedXML);
+        //System.out.println(formattedXML);
+
+        //Writing formatted XML to a file
+        FileWriter fileWriter = new FileWriter("formattedXML.xml");
+        fileWriter.write(formattedXML);
+        fileWriter.close(); // closing file writer stream
+    }
+
+    static void newUserInfo() throws Exception { //adatok rögzítése
         Scanner scan = new Scanner(System.in);
         out.println("Név: "); //Felhasználó neve
         String nev = scan.nextLine();
