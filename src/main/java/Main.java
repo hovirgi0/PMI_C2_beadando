@@ -3,21 +3,14 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
-
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
 import static java.lang.System.out;
-
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.util.Scanner;
 import java.io.*;
-
-import java.awt.event.KeyEvent;
 
 public class Main {
     private static final char SEPARATOR = ';';
